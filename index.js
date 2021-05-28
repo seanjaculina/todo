@@ -5,72 +5,50 @@ const list = document.querySelector("#list");
 const listArray = [];
 
 function addToDo(input){
+    if(!input || input.length === 0) return;
     const toDo = {
         text: input,
         randomID: Math.random() * 13 * 7 * 5,
-        completed: false
     };
-
     listArray.unshift(toDo);
-
     return toDo;
 }
 
 button.addEventListener("click", ()=>{
-
     const UI = userInput.value;
     const toDo = addToDo(UI);
 
     userInput.value = "";
 
-    console.log(listArray);
-
     const li = document.createElement("li");
+    const trashDiv = document.createElement("div");
+    
     li.innerText = UI;
-
     li.setAttribute("data-id", toDo.randomID);
     li.setAttribute("data-completed", toDo.completed);
 
-
-
     const deleteIcon = document.createElement("i");
-
-
     deleteIcon.classList.add("fas", "fa-trash", "trashicon");
-
-
-
-    li.appendChild(deleteIcon);
-
-
+    trashDiv.classList.add("trashDiv");
+    trashDiv.appendChild(deleteIcon);
+    
+    li.appendChild(trashDiv);
 
     deleteIcon.addEventListener("click", ()=>{
-        const parentEle = deleteIcon.parentElement;
+        const parentEle = deleteIcon.parentElement.parentElement;
         const parentID = parentEle.getAttribute("data-id");
 
-        if(parentEle.completed === "false"){
-
-            parentEle.setAttribute("data-completed","true");
-        }
-        else{
-
-            parentEle.setAttribute("data-completed","false");
-        }
-
         for(let i = 0; i < listArray.length; i++){
-            if(listArray[i].randomID === parentID){
-                listArray[i].splice(0, 1);
-            }
+            if(listArray[i].randomID === parentID) listArray[i].splice(0, 1);
         }
-
         list.removeChild(parentEle);
-
     })
-
-
    list.insertBefore(li, list.childNodes[0]);
-
 });
+
+
+
+
 
 
 

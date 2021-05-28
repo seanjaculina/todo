@@ -37,34 +37,38 @@ body{
 }
 ul{
     margin: auto;
-    min-height: 100vh;
-    background-color: #EEE;
-    width: 60%;
+    min-height: 2rem;
+    width: 70%;
     border-radius: 5px;
     list-style-type: none;
 }
 
-
-
 li{
-    white-space: normal;
     min-height: 2rem;
     display: flex;
     padding: 1rem;
     font-size: 1.5rem;
     align-items: center;
-    width: 90%;
-    background-color: #FFF;
+    max-width: 85%;
     border-radius: 5px;
     margin: 1rem auto;
-    overflow: scroll;
-
+    overflow: auto;
+    border: 1px solid #eee;
 }
 
 .trashicon{
     font-size: 1.5rem;
-   position: absolute;
+    position: absolute;
     right: 34.7rem;
-    color: red;
+    color: rgb(177, 97, 97);
+    cursor: pointer;
+    padding-right: 1rem;
+}
 
+.trashDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 15%;
 }
