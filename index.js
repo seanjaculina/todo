@@ -5,6 +5,7 @@ const list = document.querySelector("#list");
 const listArray = [];
 
 function addToDo(input){
+    if(!input || input.length === 0) return;
     const toDo = {
         text: input,
         randomID: Math.random() * 13 * 7 * 5,
